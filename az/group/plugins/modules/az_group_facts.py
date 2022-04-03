@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Copyright: (c) 2020, Your Name <YourName@example.org>
+# Copyright: (c) 2022, Roberto Barbosa <rnrbarbosa@gmail.com>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
@@ -72,8 +72,6 @@ def run_module():
     result['ansible_facts'] = {
         'groups': group_names,
     }
-    # in the event of a successful module execution, you will want to
-    # simple AnsibleModule.exit_json(), passing the key/value results
     module.exit_json(**result)
 
 
