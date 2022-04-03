@@ -6,3 +6,6 @@ build:
 
 test:
 	ansible-playbook tests/test.yml -v
+
+clean:
+	rm *.tar.gz

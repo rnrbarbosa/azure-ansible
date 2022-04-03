@@ -1,2 +1,3 @@
 *.gz
-az/*/*.gz
+az/*/*.tar.gz
+az/group/az-group-1.0.0.tar.gz
