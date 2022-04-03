@@ -1,0 +1,12 @@
+---
+- name: Test az.group.az_group_facts module
+  hosts: localhost
+  tasks:
+  - name: Get Azure Group facts
+    az.group.az_group_facts:
+      subscription: "Pay-As-You-Go"
+    register: az_groups
+  - debug:
+      msg: "{{ az_groups }}"
+
+...
