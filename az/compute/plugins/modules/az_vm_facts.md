@@ -1,6 +1,6 @@
 # Example
 
-````
+```yaml
   - name: Get VM facts
     az.compute.az_vm_facts:
       vm: vm1
@@ -10,7 +10,7 @@
 # Output
 
 
-````
+```json
 ok: [localhost] => {
     "msg": {
         "ansible_facts": {
