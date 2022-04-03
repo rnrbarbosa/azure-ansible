@@ -1,0 +1,14 @@
+---
+- name: Test az.analytics.az_datafactory module
+  hosts: localhost
+  tasks:
+  - name: Create Data Factory
+    az.analytics.az_datafactory:
+      name: rbadf002
+      group: test1
+      state: absent
+    register: az_adf
+  - debug:
+      msg: "{{ az_adf }}"
+
+...
