@@ -66,7 +66,6 @@ def run_module():
     if module.check_mode:
         module.exit_json(**result)
 
-    subscription = module_args['subscription'] 
     exit_code, result_dict, logs = az("group list --subscription " + module.params['subscription'])
     group_names = [y.split('/')[4] for y in (x['id'] for x in result_dict)]
     

@@ -1,0 +1,13 @@
+---
+- name: Test az.compute.az_vm_facts module
+  hosts: localhost
+  tasks:
+  - name: Get VM facts
+    az.compute.az_vm_facts:
+      vm: vm1
+      group: test1
+    register: az_vm
+  - debug:
+      msg: "{{ az_vm }}"
+
+...
