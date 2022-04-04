@@ -82,19 +82,33 @@ def run_module():
     vm =  module.params['vm']
     group = module.params['group']
 
+    vm_facts = []
+    vm_os_disk = ""
+    vm_data_disks = []
+    vm_nics = []
+
+
+    az_command =  f"vm show --name {vm} -g {group} -o json"
+    exit_code, result_dict , logs = az(az_command)
+    vm_facts = result_dict
+
     az_command =  f"vm show --name {vm} -g {group} --query 'storageProfile.osDisk' -o json"
     exit_code, result_dict , logs = az(az_command)
-    vm_os_disk = result_dict['name']
+    if result_dict:
+        vm_os_disk = result_dict['name']
 
     az_command =  f"vm show --name {vm} -g {group} --query 'storageProfile.dataDisks' -o json"
     exit_code, result_dict , logs = az(az_command)
-    vm_data_disks = [x['name'] for x in result_dict]
+    if result_dict:
+        vm_data_disks = [x['name'] for x in result_dict]
     
     az_command =  f"vm show --name {vm} -g {group} --query 'networkProfile.networkInterfaces' -o json"
     exit_code, result_dict , logs = az(az_command)
-    vm_nics = [x['id'] for x in result_dict]
+    if result_dict:
+        vm_nics = [x['id'] for x in result_dict]
 
     result['ansible_facts'] = {
+        'vm': vm_facts,
         'os_disk': vm_os_disk,
         'data_disks': vm_data_disks,
         'nics': vm_nics,
